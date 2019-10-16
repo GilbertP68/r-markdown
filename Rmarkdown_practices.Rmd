@@ -1,0 +1,39 @@
+---
+title: "Untitled"
+author: Gilbert Permalloo
+output: html_document
+---
+
+# **Soil coring of wheat plants to identify genotypes with deep roots**
+
+
+```{r  gapminder_filter_Australia}
+
+# Challenge - Integrating code
+# Make sure you have a copy of the gapminder data available. Then write a code chunk to:
+# •Load the tidyverse package
+# •Read in the gapminder data
+# •Filter down to just the Australian data and print it to the screen
+# •Show a plot of the Australian population over time
+# Save and Knit your document when you have finished.
+  
+library(tidyverse)
+
+gapminder <- read_csv("data/gapminder.csv")
+
+australia <- gapminder %>% 
+  filter(country == "Australia")
+
+australia
+
+ggplot(data = australia,
+       mapping = aes(x = year,
+                     y = pop
+                     ))+
+ geom_line()
+ ```
+
+
+!["Caption](Images/WheatTrial.jpg){width=100px}
+
+!["Caption](Images/SoilCoring.jpg){width=100px}

@@ -1,0 +1,83 @@
+---
+title: "Untitled"
+output: word_document
+---
+
+# **R markdown**
+## _**Challenge - Integrating code**_
+
+
+#### _Make sure you have a copy of the gapminder data available. Then write a code chunk to:_
+#### _•Load the tidyverse package_
+#### _•Read in the gapminder data_
+#### _•Filter down to just the Australian data and print it to the screen_
+#### _•Show a plot of the Australian population over time_
+#### _Save and Knit your document when you have finished._
+
+```{r}
+knitr::opts_chunk$set(message = FALSE, warning = FALSE, fig.width = 3)
+```
+
+
+ 
+```{r setup, echo=TRUE}
+library(tidyverse)
+
+gapminder <- read_csv("data/gapminder.csv")
+
+num_countries <- gapminder %>% 
+  group_by(country) %>% 
+  summarise() %>% 
+  nrow()
+```
+Filler text There are `r nrow(gapminder)` rows of sdata for us to work with.
+And there are `r num_countries` in the study.
+
+```{r  filtering  Australia, echo=FALSE}
+australia <- gapminder %>% 
+  filter(country == "Australia")
+```
+
+
+```{r  Print Australia on screen}
+australia
+```
+
+
+```{r  Plotting Australia population vs year}
+ggplot(data = australia,
+       mapping = aes(x = year,
+                     y = pop
+                     ))+
+ geom_line()
+```
+
+
+Make text **bold** or _italics_ or `code`
+
+* First thing to do
+* Second thing
+* Third
+
+- First thing to do
+- Second thing
+- Third
+
+Some text that needs footnoting [^1].
+
+[^1]: And here is my footnote text
+
+
+1. First thing to do
+2. Second thing
+3. Third
+
+[Link to our notes](https://csiro-data-school.github.io/rmarkdown)
+
+
+!["Caption](Images/WheatTrial.jpg){width=10cm height=5cm .pull-right}
+
+
+
+We are using the R version `r getRversion()`
+and the package tidyverse version `r packageVersion("tidyverse")`
